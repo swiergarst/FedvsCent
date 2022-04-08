@@ -41,6 +41,7 @@ def plot_range(data, line='-', color=None):
     x = np.arange(data.shape[1])
     mean = np.mean(data, axis=0)
     std = np.std(data, axis=0)
+    #std = np.var(data, axis=0)
     if color==None:
         ax,  = plt.plot(x, mean,line)
         plt.fill_between(x, mean-std, mean+std, alpha = 0.5)

@@ -452,6 +452,7 @@ def load_4c_FNN():
     si_wc_g_file = "si/MNIST_4classsi_size_comp_FNN_lr0.5_lepo1_ba1_global_seed"
     si_wc_l_file = "si/MNIST_4classsi_size_comp_FNN_lr0.5_lepo1_ba1local_seed"
 
+    ci_new_g_file = "new/MNIST_4classci_size_comp_FNN_lr0.5_lepo1_ba1_global_seed"
 
 
     FNN_ci_sca_g = np.zeros((4,100))
@@ -464,6 +465,7 @@ def load_4c_FNN():
     FNN_si_wc_l = np.zeros_like(FNN_ci_sca_g)
     FNN_iid_g = np.zeros_like(FNN_ci_sca_g)
     FNN_iid_l = np.zeros_like(FNN_ci_sca_g)
+    FNN_ci_new = np.zeros_like(FNN_ci_sca_g)
 
     for i in range(4):
         FNN_iid_g[i,:] = np.load(path + iid_g_file + str(i) + ".npy")
@@ -476,17 +478,20 @@ def load_4c_FNN():
         FNN_si_nc_l[i,:] = np.mean(np.load(path + si_nc_l_file + str(i) + ".npy"), axis=0)
         FNN_si_wc_g[i,:] = np.load(path + si_wc_g_file + str(i) + ".npy")
         FNN_si_wc_l[i,:] = np.mean(np.load(path + si_wc_l_file + str(i) + ".npy"), axis=0)
-        
-    to_plot_FNN = [FNN_iid_g, FNN_ci_nc_g, FNN_ci_sca_g, FNN_si_nc_g, FNN_si_wc_g, central_FNN_5e1, central_FNN_5e2]
+        FNN_ci_new[i,:] = np.load(path + ci_new_g_file + str(i) + ".npy")
+
+    #to_plot_FNN = [FNN_iid_g, FNN_ci_nc_g, FNN_ci_sca_g, FNN_si_nc_g, FNN_si_wc_g, central_FNN_5e1, central_FNN_5e2]
     #to_plot_FNN = [FNN_iid_g, FNN_ci_nc_g, FNN_si_wc_g, central_FNN_5e1, central_FNN_5e2]
     to_plot_FNN = {
         "iid" : FNN_iid_g,
         "ci"  : FNN_ci_nc_g,
+        "ci new" : FNN_ci_new,
         "scaf": FNN_ci_sca_g,
         "si"  : FNN_si_wc_g,
         "cent 5e1": central_FNN_5e1,
         "cent 5e2": central_FNN_5e2
     }
+    
     return to_plot_FNN
 
 def load_4c_CNN():
