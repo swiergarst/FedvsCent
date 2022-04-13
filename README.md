@@ -8,7 +8,7 @@
 ## prerequisites
 
 ### docker
-Docker is required to run vantage6. details on how to install docker can be found [here](https://docs.docker.com/engine/install/). Afterwards, if you are unable to run `docker run hello-world` without the use of `sudo`, make sure to follow the additional instructions [here](https://docs.docker.com/engine/install/linux-postinstall/).
+Docker is required to run vantage6. details on how to install docker on ubuntu can be found [here](https://docs.docker.com/engine/install/ubuntu/), other platforms can be found [here](https://docs.docker.com/engine/install/) (do keep in mind that this repository has only been tested in ubuntu). Afterwards, if you are unable to run `docker run hello-world` without the use of `sudo`, make sure to follow the additional instructions [here](https://docs.docker.com/engine/install/linux-postinstall/).
 
 ### NGINX
 NGINX is used for communication between server and clients. Although not strictly necessary for the use of vantage6, in my own configuration I found it required in order for my clients to 'find' the server. NGINX can be installed using:
