@@ -27,14 +27,15 @@ Although not required, it is recommended to use either anaconda or miniconda to 
 ## Installation
 let's start with 
 ```
-git clone xx;
-cd xx
+git clone https://github.com/swiergarst/FedvsCent
+cd FedvsCent
 ```
 
-An environment file is provided with the repository, so go ahead with 
+An environment file is provided with the repository, so (if you're using anaconda/miniconda) go ahead with 
 
 ```
 conda create --name vantage6 --file conda-env.txt
+conda activate vantage6
 ```
 This should install all required python packages; python 3.7 was used.Alternatively, if you are not using a virtual environment, you can manually install all required packages using 
 ```
