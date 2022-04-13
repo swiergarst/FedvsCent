@@ -6,10 +6,10 @@ environments:
     api_key: 034e4a0a-d263-11eb-a097-0242ac110002
     api_path: /api
     databases:
-      default: /path/to/base/folder/datasets/RMA/A2/PCA/sample imbalance/AML_A2_PCA_client5.csv
+      default: /home/swier/Documents/FedvsCentdatasets/RMA/A2/PCA/sample imbalance/AML_A2_PCA_client5.csv
     encryption:
       enabled: True
-      private_key: /path/to/base/folder/privkey_testOrg5.pem
+      private_key: /home/swier/Documents/FedvsCentprivkey_testOrg5.pem
     logging:
       backup_count: 5
       datefmt: '%Y-%m-%d %H:%M:%S'
@@ -19,9 +19,9 @@ environments:
       max_size: 1024
       use_console: true
     port: '80'
-    #server_url: http://192.168.178.185
-    #server_url: http://10.0.1.15
-    server_url:
+    #server_url: http://${address} http://192.168.178.185
+    #server_url: http://${address} http://10.0.1.15
+    server_url: http://${address}
     task_dir:  
   prod: {}
   test: {}

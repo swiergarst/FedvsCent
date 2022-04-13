@@ -6,14 +6,14 @@ environments:
     api_key: 034e4a0a-d263-11eb-a097-0242ac110002
     api_path: /api
     databases:
-      #default: /path/to/base/folder/nnTest/v6_simpleNN_py/local/MNIST/MNIST_dataset_client5.csv
-      #default: /path/to/base/folder/nnTest/v6-simpleNN-py/local/banana/banana_dataset_client5.csv
-      default: /path/to/base/folder/datasets/4Class_IID/MNIST_4Class_IID_client5.csv
-      #default: /path/to/base/folder/nnTest/v6_simpleNN_py/local/MNIST_2Class_class_imbalance/MNIST_2Class_class_imbalance_client5.csv
-      #default: /path/to/base/folder/nnTest/v6_simpleNN_py/local/MNIST_2Class_Sample_Imbalance/MNIST_2Class_sample_imbalance_client5.csv
+      #default: /home/swier/Documents/FedvsCentnnTest/v6_simpleNN_py/local/MNIST/MNIST_dataset_client5.csv
+      #default: /home/swier/Documents/FedvsCentnnTest/v6-simpleNN-py/local/banana/banana_dataset_client5.csv
+      default: /home/swier/Documents/FedvsCentdatasets/4Class_IID/MNIST_4Class_IID_client5.csv
+      #default: /home/swier/Documents/FedvsCentnnTest/v6_simpleNN_py/local/MNIST_2Class_class_imbalance/MNIST_2Class_class_imbalance_client5.csv
+      #default: /home/swier/Documents/FedvsCentnnTest/v6_simpleNN_py/local/MNIST_2Class_Sample_Imbalance/MNIST_2Class_sample_imbalance_client5.csv
     encryption:
       enabled: True
-      private_key: /path/to/base/folder/privkey_testOrg5.pem
+      private_key: /home/swier/Documents/FedvsCentprivkey_testOrg5.pem
     logging:
       backup_count: 5
       datefmt: '%Y-%m-%d %H:%M:%S'
@@ -23,9 +23,9 @@ environments:
       max_size: 1024
       use_console: true
     port: '80'
- #   server_url: http://192.168.178.185
-#    server_url: http://10.0.1.15
-    server_url:
+ #   server_url: http://${address} http://192.168.178.185
+#    server_url: http://${address} http://10.0.1.15
+    server_url: http://${address}
     task_dir:  
   prod: {}
   test: {}

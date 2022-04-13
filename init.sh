@@ -16,8 +16,8 @@ do
         file="${prefix}${folders[${j}]}org${i}.yaml"
         if test -f "$file"; then
             sed -i "s,/path/to/base/folder/,${PWD},g" ${file}
-            sed -i "s,~/Documents/afstuderen/vantage6/tasks," ",g," ${file}
-            sed -i 's,server_url:,server_url: http://${address},g,' ${file}
+            sed -i "s,~/Documents/afstuderen/vantage6/tasks, ,g" ${file}
+            sed -i 's,server_url:,server_url: http://${address},g' ${file}
         fi
         #sed -i s,/home/swier/Documents/afstuderen/,/path/to/base/,g ${file}
         #sed -i s,/home/swier/.local/share/vantage6/node/,/path/to/base/,g ${file}
