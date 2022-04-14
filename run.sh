@@ -7,7 +7,7 @@ case $1 in
   "IID")
     if [ $2 -eq 2 ]
     then
-      NODE="2class_IID/org"
+      NODE="2class_IID/IID_org"
     elif [ $2 -eq 4 ]
     then
       NODE="4class_IID/IID_org"
