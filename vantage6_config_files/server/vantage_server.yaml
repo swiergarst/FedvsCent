@@ -17,5 +17,5 @@ environments:
       max_size: 1024
       use_console: true
     port: '5000'
-    uri: sqlite:////home/swier/Documents/FedvsCent/default.sqlite
+    uri: sqlite:////absolute/path/to/folder/default.sqlite
   test: {}
