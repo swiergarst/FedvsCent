@@ -9,7 +9,7 @@ environments:
       default: /path/to/base/folder/datasets/RMA/A2/3node_PCA_A2.csv
     encryption:
       enabled: True
-      private_key: path/to/base/folder/privkeys/privkey_testOrg1.pem
+      private_key: /path/to/base/folder/privkeys/privkey_testOrg1.pem
     logging:
       backup_count: 5
       datefmt: '%Y-%m-%d %H:%M:%S'
