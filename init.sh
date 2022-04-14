@@ -31,3 +31,4 @@ sed -i s,/absolute/path/to/folder/,${PWD}/,g vantage6_config_files/server/vantag
 
 
 
+sudo useradd nginx

@@ -37,8 +37,10 @@ An environment file is provided with the repository, so (if you're using anacond
 conda create --name vantage6 --file conda-env.txt
 conda activate vantage6
 ```
-This should install all required python packages; python 3.7 was used.Alternatively, if you are not using a virtual environment, you can manually install all required packages using 
+This should install all required python packages; python 3.7 was used.Some packages have to be installed using `pip`, so run:
 ```
+sudo apt-get install gcc
+pip install -U pip setuptools
 pip install -r requirements.txt
 ```
 
