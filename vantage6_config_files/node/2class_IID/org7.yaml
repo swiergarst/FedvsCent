@@ -18,9 +18,9 @@ environments:
       max_size: 1024
       use_console: true
     port: '80'
-    # : http://${address} http://${address} http://192.168.178.185
-     : http://${address} http://${address}
-#     : http://${address} http://${address} http://10.0.1.15
+    #server_url: http://${address} http://192.168.178.185
+    server_url: http://${address}
+#    server_url: http://${address} http://10.0.1.15
     task_dir:  
   prod: {}
   test: {}
