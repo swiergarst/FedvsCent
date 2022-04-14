@@ -9,7 +9,7 @@ environments:
       default: /path/to/base/folder/datasets/RMA/A3/AML_A3_base.csv
     encryption:
       enabled: True
-      private_key: /path/to/base/folder/privkey_testOrg2.pem
+      private_key: path/to/base/folder/privkeys/privkey_testOrg2.pem
     logging:
       backup_count: 5
       datefmt: '%Y-%m-%d %H:%M:%S'

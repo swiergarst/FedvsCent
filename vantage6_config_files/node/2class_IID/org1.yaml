@@ -8,7 +8,7 @@ environments:
       default: /path/to/base/folder/datasets/MNIST_2Class_IID/MNIST_2Class_IID_client1.csv
     encryption:
       enabled: True
-      private_key: /path/to/base/folder/privkey_testOrg1.pem
+      private_key: path/to/base/folder/privkeys/privkey_testOrg1.pem
     logging:
       backup_count: 5
       datefmt: '%Y-%m-%d %H:%M:%S'
