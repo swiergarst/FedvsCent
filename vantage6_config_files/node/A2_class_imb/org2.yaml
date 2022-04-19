@@ -9,7 +9,7 @@ environments:
       default: /path/to/base/folder/datasets/RMA/A2/PCA/class imbalance/A2_PCA_client2.csv
     encryption:
       enabled: True
-      private_key: /path/to/base/folder/privkeys/privkey_testOrg2.pem
+      private_key: path/to/base/folder/privkeys/privkey_testOrg2.pem
     logging:
       backup_count: 5
       datefmt: '%Y-%m-%d %H:%M:%S'

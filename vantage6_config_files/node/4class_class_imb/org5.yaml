@@ -9,7 +9,7 @@ environments:
       default: /path/to/base/folder/datasets/4Class_class_imbalance/MNIST_4Class_class_imbalance_client5.csv
     encryption:
       enabled: True
-      private_key: /path/to/base/folder/privkeys/privkey_testOrg5.pem
+      private_key: path/to/base/folder/privkeys/privkey_testOrg5.pem
     logging:
       backup_count: 5
       datefmt: '%Y-%m-%d %H:%M:%S'
