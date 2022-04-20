@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np
 import sqlite3
 import math
-
-from v6_simpleNN_py.model import model
+import os
 
 def get_config(dataset, model_choice, num_clients, class_imbalance, sample_imbalance):
     datasets = get_datasets(dataset, class_imbalance, sample_imbalance)
@@ -16,45 +15,44 @@ def get_config(dataset, model_choice, num_clients, class_imbalance, sample_imbal
     return datasets, parameters, X_test, y_test, c, ci
 
 def get_datasets(dataset, class_imbalance = False, sample_imbalance = False):
-    if dataset == 'banana':
-        datasets =  ["/home/swier/Documents/afstuderen/nnTest/v6_simpleNN_py/local/banana/banana_dataset_client" + str(i) + ".csv" for i in range(10)]
-    elif dataset == 'MNIST':
-        datasets= ["/home/swier/Documents/afstuderen/nnTest/v6_simpleNN_py/local/MNIST/MNIST_dataset_client" + str(i) + ".csv" for i in range(10)]
-    elif dataset == 'MNIST_2class':
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
+
+    if dataset == 'MNIST_2class':
         if class_imbalance:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/MNIST_2Class_class_imbalance/MNIST_2Class_class_imbalance_client" + str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/MNIST_2Class_class_imbalance/MNIST_2Class_class_imbalance_client" + str(i) + ".csv" for i in range(10)]
         elif sample_imbalance:
-            datasets =["/home/swier/Documents/afstuderen/datasets/MNIST_2Class_Sample_Imbalance/MNIST_2Class_sample_imbalance_client" + str(i) + ".csv" for i in range(10)]
+            datasets =[dir_path + "/../datasets/MNIST_2Class_Sample_Imbalance/MNIST_2Class_sample_imbalance_client" + str(i) + ".csv" for i in range(10)]
         else:
-            datasets= ["/home/swier/Documents/afstuderen/datasets/MNIST_2Class_IID/MNIST_2Class_IID_client" + str(i) + ".csv" for i in range(10)]
+            datasets= [dir_path + "/../datasets/MNIST_2Class_IID/MNIST_2Class_IID_client" + str(i) + ".csv" for i in range(10)]
     elif dataset == 'MNIST_4class':
         if class_imbalance:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/4Class_class_imbalance/MNIST_4Class_class_imbalance_client" + str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/4Class_class_imbalance/MNIST_4Class_class_imbalance_client" + str(i) + ".csv" for i in range(10)]
         elif sample_imbalance:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/4Class_sample_imbalance/MNIST_4Class_sample_imbalance_client" + str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/4Class_sample_imbalance/MNIST_4Class_sample_imbalance_client" + str(i) + ".csv" for i in range(10)]
         else:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/4Class_IID/MNIST_4Class_IID_client" + str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/4Class_IID/MNIST_4Class_IID_client" + str(i) + ".csv" for i in range(10)]
     elif dataset == "fashion_MNIST" :
         if class_imbalance:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/fashion_MNIST_ci/fashion_MNIST_superCI_client" + str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/fashion_MNIST_ci/fashion_MNIST_superCI_client" + str(i) + ".csv" for i in range(10)]
         else:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/fashion_mnist/csv/fashion_MNIST_dataset_client" + str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/fashion_mnist/csv/fashion_MNIST_dataset_client" + str(i) + ".csv" for i in range(10)]
     elif dataset == "A2_PCA" :
         if class_imbalance:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/RMA/A2/PCA/class imbalance/A2_PCA_client"+ str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/RMA/A2/PCA/class imbalance/A2_PCA_client"+ str(i) + ".csv" for i in range(10)]
         elif sample_imbalance:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/RMA/A2/PCA/sample imbalance/AML_A2_PCA_client"+ str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/RMA/A2/PCA/sample imbalance/AML_A2_PCA_client"+ str(i) + ".csv" for i in range(10)]
         else:
-            datasets = ["/home/swier/Documents/afstuderen/datasets/RMA/A2/PCA/IID/AML_A2_PCA_client"+ str(i) + ".csv" for i in range(10)]
+            datasets = [dir_path + "/../datasets/RMA/A2/PCA/IID/AML_A2_PCA_client"+ str(i) + ".csv" for i in range(10)]
     elif dataset == "A2_raw" : 
-        datasets = ["/home/swier/Documents/afstuderen/datasets/RMA/A2/AML_A2_client"+ str(i) + ".csv" for i in range(10)]
+        datasets = [dir_path + "/../datasets/RMA/A2/AML_A2_client"+ str(i) + ".csv" for i in range(10)]
     elif dataset == "3node" :
         if class_imbalance: 
-            datasets = ["/home/swier/Documents/afstuderen/datasets/RMA/A" + str(i) + "/3node_PCA_A" + str(i) + ".csv" for i in range(1,4)]
+            datasets = [dir_path + "/../datasets/RMA/A" + str(i) + "/3node_PCA_A" + str(i) + ".csv" for i in range(1,4)]
         else :
-            datasets = ["/home/swier/Documents/afstuderen/datasets/RMA/A" + str(i) + "/3node_PCA_balanced_A" + str(i) + ".csv" for i in range(1,4)]
+            datasets = [dir_path + "/../datasets/RMA/A" + str(i) + "/3node_PCA_balanced_A" + str(i) + ".csv" for i in range(1,4)]
     elif dataset == "2node" : 
-        datasets = ["/home/swier/Documents/afstuderen/datasets/RMA/A" + str(i) + "/2node_PCA_A" + str(i) + ".csv" for i in range(1,3)]
+        datasets = [dir_path + "/../datasets/RMA/A" + str(i) + "/2node_PCA_A" + str(i) + ".csv" for i in range(1,3)]
     else :
         raise(ValueError("unknown dataset"))
     
@@ -240,7 +238,7 @@ def init_params(dataset, model_choice, zeros = True):
 
 
 
-def get_save_str(dataset, m_choice, c_i, s_i, u_sc, u_si, lr,  epoch, batch, dgd):
+def get_save_str(dataset, m_choice, c_i, s_i, u_sc, u_si, lr,  epoch, batch):
     if c_i:
         str1 = "ci"
     elif s_i:
@@ -250,8 +248,6 @@ def get_save_str(dataset, m_choice, c_i, s_i, u_sc, u_si, lr,  epoch, batch, dgd
 
     if u_sc:
         str2 = "scaf"
-    elif dgd:
-        str2 = "dgd"
     elif u_si:
         str2 = "size_comp"
     else:
@@ -262,7 +258,7 @@ def get_save_str(dataset, m_choice, c_i, s_i, u_sc, u_si, lr,  epoch, batch, dgd
     return (dataset + str1 + "_" + str2 + "_" + m_choice + "_lr" + str(lr) + "_lepo" + str(epoch) + "_ba" + str(batch))
     
 def clear_database():
-    con = sqlite3.connect("/home/swier/Documents/afstuderen/default.sqlite")
+    con = sqlite3.connect(dir_path + "/default.sqlite")
 
     cur = con.cursor()
 

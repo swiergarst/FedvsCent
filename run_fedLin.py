@@ -23,11 +23,12 @@ from config_functions import get_full_dataset, get_datasets, clear_database, get
 start_time = time.time()
 ### connect to server
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 print("Attempt login to Vantage6 API")
 client = Client("http://localhost", 5000, "/api")
 client.authenticate("researcher", "1234")
-privkey = "/home/swier/.local/share/vantage6/node/privkey_testOrg0.pem"
+privkey = dir_path + "/privkeys/privkey_testOrg0.pem"
 client.setup_encryption(privkey)
 
 

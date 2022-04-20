@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=${PWD}
-echo "$dir"
+#echo "$dir"
 
 vserver start --user --config ${dir}/vantage6_config_files/server/vantage_server.yaml --image harbor2.vantage6.ai/infrastructure/server:2.1.1
 

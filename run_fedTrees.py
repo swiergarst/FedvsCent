@@ -95,7 +95,7 @@ for run in range(num_runs):
     results = np.array(np.load(BytesIO(res["result"]),allow_pickle=True), dtype=object)
     print(results.shape)
 
-    sys.exit()
+
     for round in range(num_global_rounds):
         print("starting round ", round)
         round_task = client.post_task(

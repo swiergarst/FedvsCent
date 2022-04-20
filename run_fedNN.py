@@ -14,20 +14,23 @@ import pandas as pd
 
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
-from v6_simpleNN_py.model import model
+from fed_common.nn_common import model_common
 from io import BytesIO
 from vantage6.tools.util import info
 from vantage6.client import Client
-from helper_functions import heatmap
-from config_functions import get_config, clear_database, get_save_str
-from comp_functions import average, scaffold
+from fed_common.heatmap import heatmap
+from fed_common.config_functions import get_config, clear_database, get_save_str
+from fed_common.comp_functions import average, scaffold
 start_time = time.time()
 ### connect to server
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+print(dir_path)
 print("Attempt login to Vantage6 API")
 client = Client("http://localhost", 5000, "/api")
 client.authenticate("researcher", "1234")
-privkey = "/home/swier/.local/share/vantage6/node/privkey_testOrg0.pem"
+privkey = dir_path + "/privkeys/privkey_testOrg0.pem"
 client.setup_encryption(privkey)
 
 
@@ -46,7 +49,7 @@ lr_local = 5e-2
 lr_global = 1 #only affects scaffold. 1 is recommended
 
 local_epochs = 1 #local epochs between each communication round
-local_batch_amt = 10 #amount of  batches the data gets split up in at each client   
+local_batch_amt = 1 #amount of  batches the data gets split up in at each client   
 
 ids = [org['id'] for org in client.collaboration.get(1)['organizations']]
 
@@ -54,12 +57,12 @@ ids = [org['id'] for org in client.collaboration.get(1)['organizations']]
 dataset = 'MNIST_2class' # options: MNIST_2class, MNIST_4class, MNIST, fashion_MNIST, A2, 3node, 2node
 resultsFolder = "datafiles/"
 
-model_choice = "CNN" #decides the neural network; either FNN or CNN
+model_choice = "FNN" #decides the neural network; either FNN or CNN
 save_file = True # whether to save results in .npy files
 
 # these settings change the distribution of the datasets between clients. sample_imbalance is not checked if class_imbalance is set to true
 class_imbalance = False
-sample_imbalance = True
+sample_imbalance = False
 
 use_scaffold= False # if true, uses scaffold instead of federated averaging
 use_c = True # if false, all control variates are kept 0 in SCAFFOLD (debug purposes)
@@ -68,8 +71,8 @@ use_sizes = True # if false, the non-weighted average is used in federated avera
 #federated settings
 num_global_rounds = 100 #number of communication rounds
 num_clients = 10 #number of clients (make sure this matches the amount of running vantage6 clients)
-num_runs = 3 #amount of experiments to run using consecutive seeds
-seed_offset = 1 #decides which seeds to use: seed = seed_offset + current_run_number
+num_runs = 4 #amount of experiments to run using consecutive seeds
+seed_offset = 0 #decides which seeds to use: seed = seed_offset + current_run_number
 
 ### end of settings ###
 
@@ -105,7 +108,7 @@ for run in range(num_runs):
     
 
     #test model for global testing
-    testModel = model(dataset_tosend, model_choice, c)
+    testModel = model_common(dataset_tosend, model_choice, c)
     testModel.double()
     for round in range(num_global_rounds):
         for i in range(num_clients):
@@ -143,7 +146,6 @@ for run in range(num_runs):
                 image = "sgarst/federated-learning:fedNN10",
                 organization_ids=[org_id],
                 collaboration_id= 1
-                
             )
             task_list[i] =  round_task
 
