@@ -17,9 +17,9 @@ sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from sklearn.linear_model import SGDClassifier
 from io import BytesIO
 from vantage6.client import Client
-from helper_functions import heatmap
-from comp_functions import average, scaffold
-from config_functions import get_full_dataset, get_datasets, clear_database, get_save_str
+from fed_common.heatmap import heatmap
+from fed_common.comp_functions import average, scaffold
+from fed_common.config_functions import get_full_dataset, get_datasets, clear_database, get_save_str
 start_time = time.time()
 ### connect to server
 
@@ -50,7 +50,7 @@ lr_global = 1 #only affects scaffold. 1 is recommended
 
 #dataset and booleans
 dataset = 'MNIST_2class' #options: MNIST_2class, MNIST_4class, fashion_MNIST, A2_PCA, 3node
-resultsFolder = "datafiles/" #folder for saving data files 
+resultsFolder = "/" #folder for saving data files 
 classifier = "LR" #either SVM or LR
 
 save_file = True # whether to save results in .npy files

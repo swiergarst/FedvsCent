@@ -26,7 +26,6 @@ start_time = time.time()
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-print(dir_path)
 print("Attempt login to Vantage6 API")
 client = Client("http://localhost", 5000, "/api")
 client.authenticate("researcher", "1234")
@@ -55,7 +54,7 @@ ids = [org['id'] for org in client.collaboration.get(1)['organizations']]
 
 #dataset and booleans
 dataset = 'MNIST_2class' # options: MNIST_2class, MNIST_4class, MNIST, fashion_MNIST, A2, 3node, 2node
-resultsFolder = "datafiles/"
+resultsFolder = "/"
 
 model_choice = "FNN" #decides the neural network; either FNN or CNN
 save_file = True # whether to save results in .npy files

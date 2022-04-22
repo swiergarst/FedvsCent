@@ -5,9 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 sys.path.insert(1, os.path.join(sys.path[0], '../..'))
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
-from config_functions import get_config, get_save_str
+from fed_common.config_functions import get_config, get_save_str
 
-from helper_functions import  heatmap
+from fed_common.heatmap import  heatmap
 from vantage6.client import Client
 import time
 from vantage6.tools.util import info
@@ -44,7 +44,7 @@ sample_imbalance = False
 
 dataset = "fashion_MNIST" #options: MNIST_2class, MNIST_4class, fashion_MNIST, A2_PCA, 3node
 
-week = "datafiles/w21/" #folder for saving data files 
+resultsFolder = "/" #folder for saving data files 
 prefix = "Trees_fashion_MNIST_CI" #datafile string prefix
 
 ### end parameter settings ###
@@ -129,10 +129,10 @@ for run in range(num_runs):
         model.set_params(n_estimators = round + 2)
     if save_file:
     ### save arrays to files
-        with open (week + prefix + "local_seed" + str(seed) + ".npy", 'wb') as f:
+        with open (resultsFolder + prefix + "local_seed" + str(seed) + ".npy", 'wb') as f:
             np.save(f, local_accuracies)
         
-        with open (week + prefix + "global_seed" + str(seed) + ".npy", 'wb') as f:
+        with open (resultsFolder + prefix + "global_seed" + str(seed) + ".npy", 'wb') as f:
             np.save(f, global_accuracies)
 
 
