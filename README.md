@@ -1,4 +1,4 @@
-# Working Title
+# Reproducability repository for FL paper
 
 ## Introduction
  This repository is a collection of scripts which can be used to reproduce the results described in xx. The scripts initiate docker images which are stored on [docker hub](https://hub.docker.com/repository/docker/sgarst/federated-learning/general). The source code for these images can be found [here](https://github.com/swiergarst/Federated-Classifiers); commit tags correspond to image names. All experiments were done on an Ubuntu 20.04 machine.
@@ -44,7 +44,7 @@ We need to modify some config files, as well as install some final packages etc.
 bash init.sh
 ```
 
-Finally, to get the datasets in the right place. Download the zip file including all datasets from [drive](https://drive.google.com/file/d/1fF7bEPgY4zukDgIdezjROITQZ78bSQQU/view?usp=sharing). Copy the .zip into the main folder of this repository, and unzip it.
+Finally, to get the datasets in the right place. Download the zip file including all datasets from [drive](https://drive.google.com/file/d/12N3mx6Khpl5156k-FX7CUrROIeztkSUL/view?usp=sharing). Copy the .zip into the main folder of this repository, and unzip it.
 
 
 ## Usage
